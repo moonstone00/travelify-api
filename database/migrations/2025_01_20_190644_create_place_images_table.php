@@ -12,17 +12,17 @@ class CreatePlaceImagesTable extends Migration
      * @return void
      */
     public function up()
-{
-   Schema::create('place_images', function (Blueprint $table) {
-      $table->id();
-      $table->unsignedBigInteger('place_id');
-      $table->string('image');
-      $table->timestamps();
+    {
+        Schema::create('place_images', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('place_id');
+            $table->string('image');
+            $table->timestamps();
 
-      //relationship place
-      $table->foreign('place_id')->references('id')->on('places');
-   });
-}
+            //relationship place
+            $table->foreign('place_id')->references('id')->on('places');
+        });
+    }
 
     /**
      * Reverse the migrations.
