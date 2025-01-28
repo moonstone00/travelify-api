@@ -7,6 +7,7 @@ use App\Http\Resources\PlaceResource;
 use App\Models\Place;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PlaceController extends Controller
@@ -150,5 +151,28 @@ class PlaceController extends Controller
 
         // return failed with Api Resource
         return new PlaceResource(false, 'Data Gagal Diupdate!', null);
+    }
+
+    public function destroy($id) {
+
+        // find place by ID
+        $place = Place::findOrFail($id);
+
+        // loop image from relationship
+        foreach($place->images()->get() as $image) {
+            // remove image
+            Storage::disk('local')->delete('public/places'.basename($image->image));
+
+            // remove child relation
+            $image->delete();
+        }
+
+        if($place->delete()) {
+            // return success with Api Resource
+            return new PlaceResource(true, 'Data Place Berhasil Dihapus!', null);
+        }
+
+        // return failed with Api Resource
+        return new PlaceResource(false, 'Data Gagal Dihapus!', null);
     }
 }
