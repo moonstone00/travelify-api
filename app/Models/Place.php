@@ -22,7 +22,7 @@ class Place extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function placeImage() {
+    public function images() {
         return $this->hasMany(PlaceImage::class);
     }
 }

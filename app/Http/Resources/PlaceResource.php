@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlaceResource extends JsonResource
 {
-
     // public properti
     public $status;
     public $message;

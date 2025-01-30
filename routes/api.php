@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +35,9 @@ Route::prefix('admin')->group(function () {
 
         // categories resource
         Route::apiResource('/categories', App\Http\Controllers\Api\Admin\CategoryController::class, ['except' => ['create', 'edit'], 'as' => 'admin']);
+
+        // places resource
+        Route::apiResource('/places', App\Http\Controllers\Api\Admin\PlaceController::class, ['except' => ['create', 'edit'], 'as' => 'admin']);
 
     });
 });
