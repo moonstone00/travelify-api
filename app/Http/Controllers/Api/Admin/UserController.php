@@ -47,6 +47,17 @@ class UserController extends Controller
         return new UserResource(false, 'Data User Gagal Disimpan', null);
     }
 
+    public function show($id) {
+        $user = User::whereId($id)->first();
+
+        if($user){
+            return new UserResource(true, 'Data User Berhasil Ditampilkan', $user);
+        }
+
+        return new UserResource(false, 'Data User Gagal Ditampilkan', null);
+
+    }
+
     public function update(Request $request, User $user) {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
