@@ -33,7 +33,7 @@ class SliderController extends Controller
         $image->storeAs('public/sliders', $image->hashName());
 
         // create slider
-        $slider = Slider::make([
+        $slider = Slider::create([
             'image' => $image->hashName(),
             'user_id' => auth()->guard('api')->user()->id,
         ]);

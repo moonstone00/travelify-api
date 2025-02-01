@@ -36,6 +36,8 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
+        return response()->json($request);
+
         $validator = Validator::make($request->all(), [
             'title'         => 'required|unique:places',
             'category_id'   => 'required',
@@ -84,7 +86,6 @@ class PlaceController extends Controller
                     'image'     => $image->hashName(),
                     'place_id'  => $place->id
                 ]);
-
             }
         }
 

@@ -32,6 +32,9 @@ class LoginController extends Controller
         // find user by emnail from request "email"
         $user = User::where('email', $request->email)->first();
 
+        echo $user;
+        return;
+
         // if password from user and password from request not same
         if(!$user || !Hash::check($request->password, $user->password)) {
 
