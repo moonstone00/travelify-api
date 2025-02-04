@@ -13,7 +13,7 @@ class Category extends Model
         'name', 'slug', 'image'
     ];
 
-    public function place() {
+    public function places() {
         return $this->hasMany(Place::class);
     }
 
