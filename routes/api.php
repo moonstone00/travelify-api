@@ -64,4 +64,6 @@ Route::prefix('web')->group(function() {
     // Route All Places Index
     Route::get('/all_places', [App\Http\Controllers\Api\Web\PlaceController::class, 'all_places', ['as' => 'web']]);
 
+    // Route Slider Index
+    Route::get('/sliders', [App\Http\Controllers\Api\Web\PlaceController::class, 'index', ['as' => 'web']]);
 });
